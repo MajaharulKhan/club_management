@@ -1,0 +1,133 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="container my-5">
+
+    <!-- Event Title -->
+    <div class="row mb-4">
+      <div class="col">
+        <h1 class="mb-1">{{ doc.event_name }}</h1>
+        <p class="text-muted">
+          <i class="fa fa-calendar"></i>
+          {{ frappe.format_date(doc.event_date) }}
+          &nbsp; | &nbsp;
+          <i class="fa fa-user"></i>
+          {{ doc.organizer }}
+        </p>
+      </div>
+    </div>
+  
+    <!-- Event Media -->
+    <div class="row mb-4">
+      <div class="col">
+  
+        {% if doc.slideshow and doc.slideshow|length > 0 %}
+  
+        <!-- Slideshow Carousel -->
+        <div id="eventCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            {% for slide in doc.slideshow %}
+            <li data-target="#eventCarousel"
+                data-slide-to="{{ loop.index0 }}"
+                class="{% if loop.first %}active{% endif %}">
+            </li>
+            {% endfor %}
+          </ol>
+  
+          <div class="carousel-inner">
+            {% for slide in doc.slideshow %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+              <img src="{{ slide.image }}"
+                   class="d-block w-100"
+                   style="height: 420px; object-fit: cover;"
+                   alt="Event Slide">
+            </div>
+            {% endfor %}
+          </div>
+  
+          <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+  
+        {% else %}
+  
+        <!-- Cover Image -->
+        <img src="{{ doc.cover or '/assets/club_management/images/default-event.png' }}"
+             class="img-fluid rounded"
+             style="width: 100%; max-height: 420px; object-fit: cover;"
+             alt="{{ doc.event_name }}">
+  
+        {% endif %}
+  
+      </div>
+    </div>
+  
+    <!-- Event Details -->
+    <div class="row">
+      <div class="col-md-8">
+  
+        <h4>About This Event</h4>
+        <div class="text-muted">
+          {{ doc.description or "Event details will be updated soon." }}
+        </div>
+  
+      </div>
+  
+      <!-- Event Info -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+  
+            <h5 class="card-title">Event Info</h5>
+  
+            <p class="mb-2">
+              <i class="fa fa-map-marker"></i>
+              <strong>Location:</strong><br>
+              {{ doc.location }}
+            </p>
+  
+            {% if doc.event_fee %}
+            <p class="mb-0">
+              <i class="fa fa-money"></i>
+              <strong>Fee:</strong> {{ doc.event_fee }}
+            </p>
+            {% endif %}
+
+            {% if frappe.utils.getdate(doc.event_date) >= frappe.utils.getdate() %}
+            <a class="btn btn-success mt-4 pull-right"  href="/event-participart/new?event={{doc.name}}">Register</a>
+            {% endif %}
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Map -->
+    {% if doc.location %}
+    <div class="row mt-5">
+      <div class="col">
+        <h4>Event Location</h4>
+  
+        <!-- Frappe Default Map (Google Maps iframe) -->
+        <iframe
+          width="100%"
+          height="350"
+          frameborder="0"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen
+          src="https://www.google.com/maps?q={{ doc.location | urlencode }}&output=embed">
+        </iframe>
+      </div>
+    </div>
+    {% endif %}
+  
+  </div>
+  
+{% endblock %}
+
+<!-- this is a sample default web page template -->

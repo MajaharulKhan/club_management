@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "FB-.###",
+ "creation": "2025-12-15 09:58:31.752109",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "facility",
+  "club_member",
+  "booking_date",
+  "time_slot",
+  "booking_fee",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "facility",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Facility",
+   "options": "Hall\nField",
+   "reqd": 1
+  },
+  {
+   "fieldname": "club_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Club Member",
+   "options": "Club Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "booking_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Booking Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "time_slot",
+   "fieldtype": "Date",
+   "label": "Time Slot"
+  },
+  {
+   "fieldname": "booking_fee",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Booking Fee",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Complet"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-15 10:05:34.881285",
+ "modified_by": "Administrator",
+ "module": "Club Management",
+ "name": "Facility Booking",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

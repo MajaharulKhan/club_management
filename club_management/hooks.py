@@ -143,23 +143,12 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"club_management.tasks.all"
-# 	],
-# 	"daily": [
-# 		"club_management.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"club_management.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"club_management.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"club_management.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"club_management.club_management.doctype.membership.membership.expire_membership"
+	],
+	
+}
 
 # Testing
 # -------

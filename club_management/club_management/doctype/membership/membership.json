@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{MEMBERSHEP}-{###}",
+ "creation": "2025-12-15 09:29:18.728277",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_uzmb",
+  "amended_from",
+  "club_member",
+  "membership_plan",
+  "start_date",
+  "end_date",
+  "column_break_wjwz",
+  "status",
+  "amount",
+  "payment_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_uzmb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Membership",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "club_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Club Member",
+   "options": "Club Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "membership_plan",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Membership Plan",
+   "options": "Membership Plan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nExpired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "fieldname": "column_break_wjwz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "membership_plan.fee_amount",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-12-16 19:03:47.081390",
+ "modified_by": "Administrator",
+ "module": "Club Management",
+ "name": "Membership",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Club Member",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

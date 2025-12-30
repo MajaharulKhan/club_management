@@ -9,4 +9,5 @@ frappe.ui.form.on("Event Participant", {
             })
         }
 	},
+    
 });
